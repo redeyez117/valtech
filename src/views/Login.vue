@@ -2,36 +2,23 @@
   <div class="login-container">
     <h1 id="login-header">Join our stock community!</h1>
     <p>Download free photos and videos powered by the best photographers.</p>
-      <form>
-        <div class="form-group">
-          <label for="email" class="base-input-label">
-            USERNAME
-          </label>
-          <input
-              required
+          <BaseInput
               id="email"
               type="text"
               v-model="email"
-              class="base-input"
+              label="USERNAME"
               placeholder="Enter username here ..."
           />
-        </div>
-        <div class="form-group">
-          <label for="password" class="base-input-label">
-            PASSWORD
-          </label>
-          <input
-              required
+          <BaseInput
               id="password"
-              type="secret"
+              type="password"
               v-model="password"
-              class="base-input"
+              label="PASSWORD"
               placeholder="Enter password here ..."
           />
-        </div>
         <p class="error-message" v-if="validationError">Username or password is incorrect!</p>
-        <button type="submit" @click="login" class="login-btn">Log In</button>
-      </form>
+        <p class="error-message" v-if="emptyFields">Please fill out the fields</p>
+        <button @click="login" class="login-btn">Log In</button>
   </div>
 <CustomFooter/>
 </template>
@@ -47,7 +34,7 @@ localStorage.setItem('password','secret')
 
 const email = ref('')
 const password = ref('')
-const {validationError} = storeToRefs(authLogin)
+const {validationError,emptyFields} = storeToRefs(authLogin)
 
 function login() {
   return authLogin.login(email.value,password.value)
@@ -66,25 +53,6 @@ function login() {
   font-weight: 900;
   line-height: 1;
   margin-top: 40px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.base-input {
-  border: 2px solid var(--vt-c-black-soft);
-  padding: 8px;
-  width: 330px;
-}
-
-.base-input-label {
-  color: var(--vt-c-black);
-  font-weight: 600;
-  line-height: 1.5;
 }
 
 .login-btn {

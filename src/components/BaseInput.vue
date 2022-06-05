@@ -1,14 +1,16 @@
 <template>
-  <div>
+  <div class="form-group">
     <label v-if="label" :for="id" class="base-input-label">
       {{ label }}
     </label>
     <input
+        required
         :id="id"
         :type="type"
         :value="modelValue"
         @input="updateInput"
         class="base-input"
+        :placeholder="placeholder"
     />
   </div>
 </template>
@@ -32,6 +34,10 @@ export default {
     type: {
       type: String,
       default: "text",
+    },
+    placeholder: {
+      type: String,
+      default: 'Enter Value here...'
     }
   },
   methods: {
@@ -42,18 +48,25 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "@/assets/base.css";
-
-.base-input {
-  border: 1px solid var(--vt-c-black-soft);
-  padding: 5px;
-  width: 45px;
-}
 
 .base-input-label {
   color: var(--vt-c-black);
   font-weight: 600;
   line-height: 1;
+  font-size: 12px;
+}
+
+.base-input {
+  padding: 7px;
+  width: 327px;
+  min-width:250px;
+}
+
+.form-group {
+  display: grid;
+  place-items: center;
+  margin-top: 40px;
 }
 </style>

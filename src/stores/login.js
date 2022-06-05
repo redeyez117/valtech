@@ -6,11 +6,12 @@ export const useLoginStore = defineStore({
     state: () => ({
         email: localStorage.getItem('email'),
         password: localStorage.getItem('password'),
-        validationError: false
+        validationError: false,
+        authenticated: localStorage.getItem('authenticated')
     }),
     actions: {
         async login(email, password) {
-            if (this.email === email && this.password === password) {
+           if (this.email === email && this.password === password) {
                 localStorage.setItem('authenticated', 'true')
                 await router.push('/')
             } else {
