@@ -19,8 +19,6 @@ export const useAlbumsStore = defineStore({
             this.albums[album] = []
         },
         addPhotosToAlbum(album) {
-            console.log(album)
-            console.log(this.selectedPhoto)
            this.albums[album].push(this.selectedPhoto)
         },
         toggleModal(photo) {

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="photos-wrapper">
-      <img @click="goToPhotoDetails(photo.id)" alt="photo" v-for="photo in this.photos" :src="photo.download_url" class="photo"/>
+      <img v-lazy="photo.download_url" @click="goToPhotoDetails(photo.id)" alt="photo" v-for="photo in this.photos" class="photo"/>
     </div>
   </div>
 </template>
@@ -12,11 +12,11 @@ import {mapActions, mapState} from "pinia";
 
 export default {
 name: "Dashboard",
- mounted() {
+  mounted() {
     this.getPhotos()
   },
   computed: {
-  ...mapState(useAlbumsStore, ['photos'])
+  ...mapState(useAlbumsStore, ['photos','loader'])
   },
   methods: {
   ...mapActions(useAlbumsStore,['getPhotos']),
