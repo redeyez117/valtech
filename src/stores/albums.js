@@ -11,9 +11,16 @@ export const useAlbumsStore = defineStore({
     }),
     actions: {
         async getPhotos() {
-            const response = await fetch('https://picsum.photos/v2/list')
+            const response = await fetch('https://picsum.photos/v2/list?page=1&limit=30')
             const photoDetails = await response.json()
             return this.photos = photoDetails
+        },
+
+        async loadMorePhotos() {
+            const response = await fetch('https://picsum.photos/v2/list?page=2&limit=30')
+            const photoDetails = await response.json()
+            photoDetails.forEach(item=>this.photos.push(item))
+            return this.photos
         },
         createAlbum(album) {
             this.albums[album] = []

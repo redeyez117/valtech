@@ -4,6 +4,9 @@
       <img v-lazy="photo.download_url" @click="goToPhotoDetails(photo.id)" alt="photo" v-for="photo in this.photos" class="photo"/>
     </div>
   </div>
+  <div style="display: flex;justify-content: center">
+    <button class="load-btn" @click="loadMore" v-if="this.photos.length>0 && this.photos.length <= 60">Load More...</button>
+  </div>
 </template>
 
 <script>
@@ -20,9 +23,14 @@ name: "Dashboard",
   },
   methods: {
   ...mapActions(useAlbumsStore,['getPhotos']),
+    ...mapActions(useAlbumsStore,['loadMorePhotos']),
 
     goToPhotoDetails(id) {
     this.$router.push(`/photo-detail/${id}`)
+    },
+
+    loadMore() {
+    this.loadMorePhotos()
     }
 
   }
@@ -77,5 +85,14 @@ name: "Dashboard",
     -moz-column-count: 3;
     column-count: 3;
   }
+}
+
+.load-btn {
+  padding: 15px;
+  border: 1px solid lightblue;
+  color: lightskyblue;
+  margin-block: 15px;
+  background: transparent;
+  width: 200px;
 }
 </style>
