@@ -27,3 +27,8 @@ npm run dev
 ```sh
 npm run build
 ```
+
+# Account Credentials
+
+###username: admin@test.com
+###password: secret
