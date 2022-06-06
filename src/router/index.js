@@ -24,7 +24,15 @@ const router = createRouter({
             name: 'photo-detail',
             component: () => import('../views/PhotoDetail.vue'),
             meta: {
-                auth: false
+                auth: true
+            }
+        },
+        {
+            path: '/album/:album',
+            name: 'album',
+            component: () => import('../views/Album.vue'),
+            meta: {
+                auth: true
             }
         }
 

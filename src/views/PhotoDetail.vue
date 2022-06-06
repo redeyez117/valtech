@@ -15,14 +15,16 @@
    </div>
     <AlbumModal v-if="showAlbumModal"/>
   </div>
+  <SuccessToast/>
 </template>
 
 <script setup>
 import BaseButton from "../components/BaseButton.vue";
+import SuccessToast from "../components/SuccessToast.vue";
+import AlbumModal from "../components/AlbumModal.vue";
 import {useRoute,useRouter} from "vue-router";
 import {computed, ref, toRefs} from "@vue/reactivity";
 import moment from 'moment'
-import AlbumModal from "../components/AlbumModal.vue";
 
 import {useAlbumsStore} from "../stores/albums";
 import {storeToRefs} from "pinia";

@@ -1,4 +1,4 @@
-import {defineStore} from 'pinia'
+import {defineStore} from 'pinia';
 
 export const useAlbumsStore = defineStore({
     id: 'albums',
@@ -6,20 +6,25 @@ export const useAlbumsStore = defineStore({
         photos: [],
         albums: {},
         showAlbumModal: false,
+        successMessage: false,
         selectedPhoto: null
     }),
     actions: {
         async getPhotos() {
             const response = await fetch('https://picsum.photos/v2/list')
             const photoDetails = await response.json()
-            photoDetails.forEach(item => (this.photos.push(item)))
-            return this.photos
+            return this.photos = photoDetails
         },
         createAlbum(album) {
             this.albums[album] = []
         },
-        addPhotosToAlbum(album) {
-           this.albums[album].push(this.selectedPhoto)
+        async addPhotosToAlbum(album) {
+            this.albums[album].push(this.selectedPhoto)
+            this.successMessage = true
+            this.showAlbumModal = false
+            setTimeout(()=>{
+                this.successMessage = false
+            },1000)
         },
         toggleModal(photo) {
             this.selectedPhoto = photo

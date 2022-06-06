@@ -19,9 +19,6 @@ import {useAlbumsStore} from "../stores/albums";
 import {ref} from "@vue/reactivity";
 const {albums,toggleModal,addPhotosToAlbum} = useAlbumsStore()
 const selectedAlbum = ref(null)
-const savePhotoToAlbum = () => {
-
-}
 </script>
 
 <style scoped>
