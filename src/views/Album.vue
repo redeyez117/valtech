@@ -4,7 +4,7 @@
     <p class="album-title">{{filteredAlbum[0][0]}}</p>
     <p class="small-text text-center">Date created: {{creationDate}}</p>
     <div class="grid-photo-gallery">
-      <img v-for="image in filteredAlbumPhotos" :src="image.download_url" class="album-photos"/>
+      <img alt="album-photo" @click="goToPhotoDetails(image.id)" v-for="image in filteredAlbumPhotos" :src="image.download_url" class="album-photos"/>
     </div>
     <div class="action-btn">
       <BaseButton @click="goToDashboard" class="go-back" background="white" title="GO BACK"/>
@@ -40,6 +40,10 @@ const creationDate = computed(() => {
 
 const goToDashboard = () => {
   router.push({name:'home'})
+}
+
+const goToPhotoDetails = (id) => {
+  router.push(`/photo-detail/${id}`)
 }
 
 </script>

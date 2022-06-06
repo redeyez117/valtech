@@ -14,7 +14,7 @@ const route = useRoute()
   <div class="header-container">
     <div :style="route.name === 'login' ? {justifyContent:'center'} : ''" class="row">
       <h5 class="logout" @click="logout" v-if="route.name !== 'login'">Logout</h5>
-       <img class="header-image" src="/SiteLogo.svg"/>
+       <img alt="header-logo" class="header-image" src="/SiteLogo.svg"/>
       <BaseButton class="album-btn" background="black" border-color="white" color="white" title="My Album" v-if="route.name !== 'login'"/>
       <div v-if="Object.keys(albums).length" class="dropdown-menu">
         <div class="dropdown-list">

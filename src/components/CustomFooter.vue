@@ -1,6 +1,6 @@
 <template>
 <footer class="custom-footer">
-  <img class="footer-image" src="src/assets/image/footer_img.svg">
+  <img alt="footer-logo" class="footer-image" src="src/assets/image/footer_img.svg">
 </footer>
 </template>
 
